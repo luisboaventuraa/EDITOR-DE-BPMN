@@ -324,6 +324,11 @@ export default function App() {
         setHistoryStack([]);
         setRedoStack([]);
         setProcess(parsed);
+        setSelectedNodeId(null);
+        setSelectedConnectionId(null);
+        setPanX(60);
+        setPanY(60);
+        setZoom(0.65);
         
         // Add to projects list
         setProjectsList((prev) => {
