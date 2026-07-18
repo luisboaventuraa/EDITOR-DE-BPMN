@@ -1,0 +1,6 @@
+{
+  "name": "Editor de Processos BPMN Modular",
+  "description": "Aplicativo web responsivo para criação visual e organização de processos de trabalho baseados na notação BPMN com encaixe em grade, raias de responsabilidade horizontais, simulação de execução e validação em tempo real.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
