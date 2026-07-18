@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages serves this project from /EDITOR-DE-BPMN/, not the domain root.
+    base: '/EDITOR-DE-BPMN/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
