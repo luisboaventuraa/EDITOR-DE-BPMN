@@ -83,10 +83,13 @@ export default function Topbar({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      setShowExportDropdown(false);
       const reader = new FileReader();
       reader.onload = (event) => {
         const text = event.target?.result as string;
         onImportJSON(text);
+        // Allows importing the same file again if the user needs to retry.
+        e.target.value = '';
       };
       reader.readAsText(file);
     }
@@ -354,23 +357,12 @@ export default function Topbar({
                   Importação
                 </div>
                 <button
-                  onClick={() => {
-                    handleImportClick();
-                    setShowExportDropdown(false);
-                  }}
+                  onClick={handleImportClick}
                   className="w-full text-left px-4 py-2 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex items-center gap-2 transition-colors"
                 >
                   <Upload size={14} className="text-slate-400" />
                   Importar JSON (.json)
                 </button>
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleFileChange}
-                  accept=".json"
-                  className="hidden"
-                />
-
                 <div className="h-px bg-slate-100 dark:bg-slate-800 my-2"></div>
                 <div className="px-3 py-1.5 text-xs font-semibold text-slate-400 uppercase tracking-wider">
                   Formatos de Arquivo
@@ -433,6 +425,13 @@ export default function Topbar({
               </div>
             </>
           )}
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            accept=".json,application/json"
+            className="hidden"
+          />
         </div>
       </div>
     </header>
